@@ -13,6 +13,12 @@ namespace ContratosWebAPI.Dominio.Servicos
         {
             RepositorioContrato = repositorioContrato;
         }
+
+        public void Atualizar(Contrato categoria)
+        {
+            RepositorioContrato.Update(categoria);
+        }
+
         public void Cadastrar(Contrato contrato)
         {
             contrato.Prestacoes = new List<Prestacao>();

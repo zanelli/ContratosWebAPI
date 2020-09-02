@@ -6,9 +6,11 @@ namespace ContratosWebAPI.Repositorio
 {
     public interface IRepositorio<TEntidade> where TEntidade: class
     {
-        void Create(TEntidade Entity);
-        TEntidade Read(int id);
-        void Delete(int id);
+        void Create(TEntidade Entidade);
         IEnumerable<TEntidade> Read();
+        TEntidade Read(int id);
+        void Update(TEntidade Entidade);
+        void Delete(int id);
+        
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ContratosWebAPI.Models
 {
-    public class ContratoViewModelGet
+    public class ContratoViewModelPut
     {
         public int Id { get; set; }
         public DateTime Data { get; set; }
@@ -14,7 +14,5 @@ namespace ContratosWebAPI.Models
         public int QuantidadeParcelas { get; set; }
 
         public decimal ValorFinanciado { get; set; }
-
-        public IEnumerable<PrestacaoViewModel> Prestacoes { get; set; }
     }
 }

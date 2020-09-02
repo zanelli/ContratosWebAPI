@@ -12,6 +12,12 @@ namespace PrestacaosWebAPI.Dominio.Servicos
         {
             RepositorioPrestacao = repositorioPrestacao;
         }
+
+        public void Atualizar(Prestacao categoria)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void Cadastrar(Prestacao prestacao)
         {
             RepositorioPrestacao.Create(prestacao);
@@ -25,6 +31,11 @@ namespace PrestacaosWebAPI.Dominio.Servicos
         public void Excluir(int id)
         {
             RepositorioPrestacao.Delete(id);
+        }
+
+        public void ExcluirPorContrato(int idContrato)
+        {
+            RepositorioPrestacao.DeletePorContrato(idContrato);
         }
 
         public IEnumerable<Prestacao> Listagem(int idContraco)

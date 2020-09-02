@@ -8,6 +8,6 @@ namespace ContratosWebAPI.Dominio.Entidades.Interfaces
     public interface IServicoPrestacao : IServicoCrud<Prestacao>
     {
         IEnumerable<Prestacao> Listagem(int idContrato);
-
+        void ExcluirPorContrato(int idContrato);
     }
 }

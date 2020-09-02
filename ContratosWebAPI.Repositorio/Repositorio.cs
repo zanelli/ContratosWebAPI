@@ -16,24 +16,17 @@ namespace ContratosWebAPI.Repositorio
             DbSetContext = Db.Set<TEntidade>();
         }
         
-        public void Create(TEntidade Entity)
+        public void Create(TEntidade Entidade)
         {
-            if(Entity.Id == null)
-            {
-                DbSetContext.Add(Entity);
-            }
-            else
-            {
-                Db.Entry(Entity).State = EntityState.Modified;
-            }
+            DbSetContext.Add(Entidade);
             Db.SaveChanges();
         }
 
         public virtual void Delete(int id)
         {
-            var ent = new TEntidade() { Id = id };
-            DbSetContext.Attach(ent);
-            DbSetContext.Remove(ent);
+            var entidade = new TEntidade() { Id = id };
+            DbSetContext.Attach(entidade);
+            DbSetContext.Remove(entidade);
             Db.SaveChanges();
 
         }
@@ -46,6 +39,13 @@ namespace ContratosWebAPI.Repositorio
         public virtual IEnumerable<TEntidade> Read()
         {
             return DbSetContext.AsNoTracking().ToList();
+        }
+
+        public void Update(TEntidade Entidade)
+        {
+            DbSetContext.Attach(Entidade);
+            Db.Entry(Entidade).State = EntityState.Modified;
+            Db.SaveChanges();
         }
     }
 }

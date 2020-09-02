@@ -14,6 +14,8 @@ namespace ContratosWebAPI.Aplicacao.Servico.Interfaces
 
         void Cadastrar(ContratoViewModelPost contrato);
 
+        void Atualizar(ContratoViewModelPut Entidade);
+
         void Excluir(int id);
     }
 }

@@ -8,6 +8,7 @@ namespace ContratosWebAPI.Dominio.Repositorio
     {
         void Create(TEntidade Entity);
         TEntidade Read(int id);
+        void Update(TEntidade Entidade);
         void Delete(int id);
         IEnumerable<TEntidade> Read();
     }

@@ -8,5 +8,6 @@ namespace ContratosWebAPI.Dominio.Repositorio
     public interface IRepositorioPrestacao : IRepositorio<Prestacao>
     {
         new IEnumerable<Prestacao> ReadContrato(int idContrato);
+        void DeletePorContrato(int idContrato);
     }
 }

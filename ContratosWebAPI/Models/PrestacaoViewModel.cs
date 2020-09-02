@@ -21,8 +21,5 @@ namespace ContratosWebAPI.Models
         
         public Status Status { get; set; }
 
-        //public int IdContrato { get; set; }
-        
-        //public Contrato Contrato { get; set; }
     }
 }

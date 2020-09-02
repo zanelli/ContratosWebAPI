@@ -35,7 +35,8 @@ namespace ContratosWebAPI.Aplicacao.Servico
 
         public void Excluir(int id)
         {
-            throw new NotImplementedException();
+            ServicoPrestacao.ExcluirPorContrato(id);
+            ServicoContrato.Excluir(id);
         }
 
         public IEnumerable<ContratoViewModelGet> Listagem()
@@ -49,6 +50,19 @@ namespace ContratosWebAPI.Aplicacao.Servico
             return listaContrato;
         }
 
+        public void Atualizar(ContratoViewModelPut Entidade)
+        {
+            ServicoContrato.Atualizar(MapeiaViewModelPutParaEntidade(Entidade));
+
+            // TODO: Atualiza as prestações
+            //decimal SaldoQuitado = ServicoPrestacao.Listagem(Entidade.Id).Where(x => x.DataPagamento != null).Sum(x => x.Valor);
+            //DateTime DataUltimoPagamento = (DateTime)ServicoPrestacao.Listagem(Entidade.Id).Where(x => x.DataPagamento != null).Max(x => x.DataPagamento);
+            //if(DataUltimoPagamento == null)
+            //{
+            //    DataUltimoPagamento = Entidade.Data.AddMonths(1);
+            //}
+
+        }
 
         internal ContratoViewModelGet MapeiaEntidadeParaViewModelGet(Contrato contratoEntidade)
         {
@@ -102,6 +116,21 @@ namespace ContratosWebAPI.Aplicacao.Servico
                 Data = contratoPost.Data,
                 QuantidadeParcelas = contratoPost.QuantidadeParcelas,
                 ValorFinanciado = contratoPost.ValorFinanciado
+            };
+
+            return contrato;
+        }
+
+        private Contrato MapeiaViewModelPutParaEntidade(ContratoViewModelPut contratoGet)
+        {
+            if (contratoGet == null) return new Contrato();
+
+            Contrato contrato = new Contrato()
+            {
+                Id = contratoGet.Id,
+                Data = contratoGet.Data,
+                QuantidadeParcelas = contratoGet.QuantidadeParcelas,
+                ValorFinanciado = contratoGet.ValorFinanciado,
             };
 
             return contrato;

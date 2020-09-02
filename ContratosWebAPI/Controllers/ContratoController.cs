@@ -12,6 +12,9 @@ using Microsoft.FeatureManagement;
 
 namespace ContratosWebAPI.Controllers
 {
+    /// <summary>
+    /// Endpoint para manipulação de contratos
+    /// </summary>
     [Route("api/v1/contrato")]
     [ApiController]
     public class ContratoController : ControllerBase
@@ -89,7 +92,34 @@ namespace ContratosWebAPI.Controllers
             }
         }
 
-        //[HttpDelete]
+
+        /// <summary>
+        /// Exclui um contrato pelo seu Id
+        /// </summary>
+        /// <param name="id">Id do contrato a ser excluído</param>
+        /// <returns></returns>
+        [HttpDelete("{id:int}")]
+        public ActionResult Delete(int id)
+        {
+            ServicoAplicacaoContrato.Excluir(id);
+            return NoContent();
+        }
+
+        /// <summary>
+        /// Atualiza um contrato pelo seu Id
+        /// </summary>
+        /// <param name="id">Id do contrato a ser editado</param>
+        /// <returns></returns>
+        [HttpPut("{id:int}")]
+        public ActionResult Put(int id, ContratoViewModelPut contrato)
+        {
+            if(id != contrato.Id)
+            {
+                return BadRequest();
+            }
+            ServicoAplicacaoContrato.Atualizar(contrato);
+            return NoContent();
+        }
 
     }
 }

@@ -16,9 +16,18 @@ namespace PrestacaosWebAPI.Repositorio.Entidades
 
         }
 
+        public void DeletePorContrato(int idContrato)
+        {
+            var entidade = DbSetContext.Where(x => x.IdContrato == idContrato );
+            DbSetContext.AttachRange(entidade);
+            DbSetContext.RemoveRange(entidade);
+            Db.SaveChanges();
+        }
+
         public IEnumerable<Prestacao> ReadContrato(int idContrato)
         {
             return DbSetContext.Where(x => x.IdContrato == idContrato).ToList();
         }
+
     }
 }
